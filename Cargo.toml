@@ -1,0 +1,17 @@
+[package]
+name = "jrice"
+version = "0.1.0"
+edition = "2021"
+description = "Japan rice pack: animated Japanese scenes for your terminal"
+license = "MIT"
+
+[dependencies]
+crossterm = "0.28"
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[profile.release]
+opt-level = 3
+lto = true
+strip = true
