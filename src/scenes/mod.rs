@@ -2,8 +2,11 @@
 //! Sizes are expressed relative to the canvas height, so every scene adapts to
 //! any terminal size.
 
+mod city;
 mod koi;
+mod lighthouse;
 mod samurai;
+mod shrine;
 mod temple;
 mod wave;
 
@@ -40,6 +43,9 @@ pub fn all() -> Vec<Box<dyn Scene>> {
         Box::new(wave::Wave),
         Box::new(samurai::Samurai),
         Box::new(koi::Koi),
+        Box::new(shrine::Shrine),
+        Box::new(lighthouse::Lighthouse),
+        Box::new(city::City),
     ]
 }
 

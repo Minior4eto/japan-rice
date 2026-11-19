@@ -112,6 +112,19 @@ fn cell(p: &Pixels, mode: Mode, x: usize, row: usize) -> (char, Rgb8, Rgb8) {
 
 /// ANSI truecolor frame. Every row is positioned explicitly, so no newline is
 /// ever printed and the terminal never scrolls.
+/// Colours this close look identical, so the previous escape code is reused.
+/// That keeps busy scenes (rain, water) from flooding the terminal.
+fn close(prev: Option<Rgb8>, c: Rgb8) -> bool {
+    match prev {
+        Some(p) => {
+            (p.0 as i32 - c.0 as i32).abs() <= 3
+                && (p.1 as i32 - c.1 as i32).abs() <= 3
+                && (p.2 as i32 - c.2 as i32).abs() <= 3
+        }
+        None => false,
+    }
+}
+
 pub fn to_ansi(p: &Pixels, mode: Mode) -> String {
     let (cols, rows) = mode.cells(p);
     let mut s = String::with_capacity(cols * rows * 24);
@@ -122,11 +135,11 @@ pub fn to_ansi(p: &Pixels, mode: Mode) -> String {
         for x in 0..cols {
             let (ch, fg, bg) = cell(p, mode, x, r);
             let blank = ch == ' ' || ch == '\u{2800}';
-            if !blank && last_fg != Some(fg) {
+            if !blank && !close(last_fg, fg) {
                 let _ = write!(s, "\x1b[38;2;{};{};{}m", fg.0, fg.1, fg.2);
                 last_fg = Some(fg);
             }
-            if last_bg != Some(bg) {
+            if !close(last_bg, bg) {
                 let _ = write!(s, "\x1b[48;2;{};{};{}m", bg.0, bg.1, bg.2);
                 last_bg = Some(bg);
             }

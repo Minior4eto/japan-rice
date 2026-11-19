@@ -50,7 +50,7 @@ OPTIONS
   -h, --help         Show this help
 
 KEYS (while running)
-  1-4 or Left/Right     switch scene
+  1-7 or Left/Right     switch scene
   a                     cycle blocks / ascii / dots
   t                     toggle fixed colours / theme colours
   q, Esc, Ctrl-C        quit
@@ -106,7 +106,7 @@ fn parse(args: &[String], names: &[&str]) -> Result<Option<Opts>, String> {
             }
             "--list" => {
                 for sc in scenes::all() {
-                    println!("{:<8} {}", sc.name(), sc.blurb());
+                    println!("{:<11} {}", sc.name(), sc.blurb());
                 }
                 return Ok(None);
             }

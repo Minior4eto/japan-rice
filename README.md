@@ -7,11 +7,18 @@ Animated Japanese scenes for your terminal, written in Rust. Run one in a spare 
 | ![temple](assets/temple.gif) | ![wave](assets/wave.gif) |
 | **Samurai** | **Koi** |
 | ![samurai](assets/samurai.gif) | ![koi](assets/koi.gif) |
+| **Shrine** | **Lighthouse** |
+| ![shrine](assets/shrine.gif) | ![lighthouse](assets/lighthouse.gif) |
+| **City** | |
+| ![city](assets/city.gif) | |
 
 - **temple**: a pagoda at dusk. Pines and grass sway, a window flickers, a lantern swings, a banner flutters, fireflies drift and petals blow past.
 - **wave**: a great wave curling over the sea in the spirit of ukiyo-e prints, with foam claws, Mount Fuji and fishing boats riding the swell.
 - **samurai**: a ronin under a huge moon, both hands on a katana planted in the ground. He breathes slowly while his sleeves and scarf move in the wind.
 - **koi**: a pond seen from above. Four koi (Kohaku, Sanke, gold Ogon and an orange one) glide through it with swaying bodies and flapping fins, casting shadows on the floor. Light caustics ripple over the bottom, rings spread where a fish touches the surface, and lily pads with lotus flowers drift on top.
+- **shrine**: a Shinto shrine on a stone terrace on a snowy night, framed by a vermilion torii. Three layers of snow fall and drift with the gusts, cedars bend under their snow, the shimenawa rope and its paper streamers swing, stone lanterns flicker and light the flakes around them, spindrift skims the ground, clumps slide off branches, icicles glint and the snow slowly piles up on every ledge.
+- **lighthouse**: a lighthouse on a cliff at night. Twin beams sweep through the sea haze and flash when they face you, the moon lays a glittering path across the swell, waves burst against the cliff, rocks wash in and out of the surf, a ship crosses the horizon, the keeper's chimney smokes, and shooting stars fall along the Milky Way.
+- **city**: a rainy Tokyo back alley drawn in real 3D perspective. Neon blade signs in katakana (one of them is failing), lit windows, shopfronts with noren curtains, rolled-down shutters, red paper lanterns on a wire, a glowing vending machine, steam from a grate, someone with a clear umbrella walking away into the haze, the wet street mirroring it all through rippling puddles, splashes on the asphalt, and lightning flickering behind the skyline.
 
 All scenes are drawn in code with shapes, so there are no image assets to load and they fit any terminal size.
 
@@ -49,6 +56,10 @@ Every scene works in all three render modes. Press `a` while it runs to cycle, o
 |---|---|---|
 | ![temple in ascii](assets/temple-ascii.png) | ![wave in dots](assets/wave-dots.png) | ![samurai in dots](assets/samurai-dots.png) |
 
+| dots (`jrice lighthouse --dots`) | dots (`jrice city --dots`) |
+|---|---|
+| ![lighthouse in dots](assets/lighthouse-dots.png) | ![city in dots](assets/city-dots.png) |
+
 The `dots` mode needs a font with braille glyphs. Most programming fonts and Nerd Fonts have them.
 
 ## Install
@@ -70,6 +81,7 @@ On Arch: `sudo pacman -S rust` (or install `rustup`), then the steps above.
 ```bash
 jrice                 # temple (default)
 jrice wave
+jrice city
 jrice koi --sync             # match your terminal theme
 jrice samurai --mode ascii   # or --ascii
 jrice wave --mode dots       # or --dots
@@ -81,7 +93,7 @@ Keys while running:
 
 | Key | Action |
 |---|---|
-| `1` `2` `3` `4` or `←` `→` | switch scene |
+| `1` to `7` or `←` `→` | switch scene |
 | `a` | cycle blocks / ascii / dots |
 | `t` | toggle fixed / theme colours |
 | `q`, `Esc`, `Ctrl-C` | quit |
@@ -122,7 +134,7 @@ cargo test
 
 Early version. Built with AI assistance. Tested by rendering every scene at many sizes and by running them in a pseudo-terminal, but I have only checked it on Linux so far.
 
-Ideas for more scenes: snow-covered shrine, rainy Tokyo night, a torii gate at sunrise. Pull requests and ideas are welcome.
+Ideas for more scenes: a torii gate at sunrise, fireflies in a bamboo forest, Mount Fuji at dawn. Pull requests and ideas are welcome.
 
 ## License
 
